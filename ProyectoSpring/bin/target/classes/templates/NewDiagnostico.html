@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="es">
+  <title>Historia Cl&iacute;nica</title>
+  <!--/*/ <th:block th:include="fragments/headlinks :: head"></th:block> /*/-->
+</head>
+<body>
+
+	<div class="container">
+		<!--/*/ <th:block th:include="fragments/header :: navbar"></th:block> /*/-->
+	</div>
+	
+	<div class="container-fluid">
+		<section id="contain1" class="container">
+			<div class="container-page">  
+				<legend><img id="hcicon" src="../../static/images/imageIcon6.png" th:src="@{/images/imageIcon6.png}"/>HISTORIA CL&Iacute;NICA</legend>
+				<form th:object="${diagnostico}" th:action="@{/diagnostico}" method="post">
+					<div class="col-md-6">
+						<legend>Informaci&oacute;n sobre Diagn&oacute;stico</legend>
+						<div class="form-group has-warning">
+							<label class="col-md-4 control-label" >Historia Cl&iacute;nica</label> 
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+								<input name="historiaclinica.idHistoriaClinica" placeholder="Codigo Identificador" class="form-control form-control-warning"  type="text" th:field="*{historiaclinica.idHistoriaClinica}" required="required" />
+								<span th:if="${#fields.hasErrors('historiaclinica.idHistoriaClinica')}" th:errors="*{historiaclinica.idHistoriaClinica}">idHistoriaClinica Error</span>
+							</div>
+							<p></p>
+
+							<!-- <div class="form-group">
+								 		 <label class="col-md-4 control-label" >Codigo de Diagnostico</label> 
+								   
+								   		 <div class="input-group">
+								   			 <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></span>
+								  		<input name="idDiagnostico" placeholder="Numero de diagnostico" class="form-control form-control-warning"  type="text" th:field="*{idDiagnostico}" required="required"/>
+												<span
+												th:if="${#fields.hasErrors('idDiagnostico')}" th:errors="*{idDiagnostico}">idDiagnostico Error
+						  			 			</span>
+								
+								   		 </div>
+							</div>-->
+		
+							<div class="form-group">
+								<label class="col-md-4 control-label" >Codigo Encargado</label>
+								<div class="input-group">
+									<span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+									<input name="medico.idMedico" placeholder="Coloque su codigo" class="form-control form-control-warning"  type="text" th:field="*{medico.idMedico}" required="required"/>
+									<span th:if="${#fields.hasErrors('medico.idMedico')}" th:errors="*{medico.idMedico}">idMedico Error</span>
+						   		 </div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-md-4 control-label">Tipo de Diagn&oacute;stico</label>    
+								<div class="input-group">
+									<span class="input-group-addon"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></span>
+									<select class="form-control selectpicker"  th:field="*{tipo}" required="required" >
+										<option value=" " >Tipo de Diagn&oacute;stico</option>
+										<option value="Diagnostico Clinico">Diagn&oacute;stico Cl&iacute;nico</option>
+										<option value="Diagnostico de Certeza">Diagn&oacute;stico de Certeza</option>
+										<option value="Diagnostico Etiologico">Diagn&oacute;stico Etiol&oacute;gico</option>
+										<option value="Diagnostico Generico">Diagn&oacute;stico Gen&eacute;rico</option>
+										<option value="Diagnostico Heroico">Diagn&oacute;stico Her&oacute;ico</option>
+										<option value="Diagnostico Lesional">Diagn&oacute;stico Lesional</option>
+										<option value="Diagnostico Nosologico">Diagn&oacute;stico Nosol&oacute;sico</option>
+										<option value="Diagnostico Patogenetico">Diagn&oacute;stico Patogen&eacute;tico</option>
+										<option value="Diagnostico Presuntivo">Diagn&oacute;stico Presuntivo</option>
+										<option value="Diagnostico Sindromico o Funcional">Diagn&oacute;stico Sindr&oacute;mico o Funcional</option>
+										<option value="Diagnostico Sintomatico">Diagn&oacute;stico Sintom&aacute;tico</option>
+								    </select>
+								    <span th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}">tipo Error</span>
+							    </div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-md-4 control-label">Informaci&oacute;n</label>
+								
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+									<textarea class="form-control" name="descripcion" placeholder="Descripci&oacute;n" th:field="*{descripcion}" required="required"></textarea>
+								</div>
+								<p id="maxcaracteres" class="form-text text-muted">El n&uacute;mero m&aacute;ximo de car&aacute;cteres es 500.</p>
+								<span th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}">descripcion Error</span>
+							</div>
+							<div class="form-group" id="botoncrear">
+								<label class="col-md-4 control-label"></label>
+								<div class="col-md-4">	
+									<input type="submit" class="btn btn-primary custom" onclick="location.href='/diagnosticos'" value="Aceptar" />
+								 <input type="button" class="btn btn-default" onclick="location.href='/'" value="Cancel" />
+								</div>
+							</div>
+						</div> <!--  Cantidad diagnosticos<p th:text="${cantidiagnosticos}">1</p>--> 
+					</div><!-- columna md 6 -->
+				</form><p th:text="${message}">1</p>
+				<!-- termina form diagnostico post -->
+			</div><!-- /.container -->
+			
+			<div class="col-md-5"><!-- parte inicial lista filtro HistoriaClinica -->
+				<div class="container">
+					<legend>B&uacute;squeda Personalizada historia cl&iacute;nica</legend>
+					<p>Encuentre el c&oacute;digo de la historia cl&iacute;nica del paciente para a&tilde;adirlo a la entrada del nuevo diagn&oacute;stico.</p>
+					<p> Presione el &iacute;cono de filtro <small>(<i class="glyphicon glyphicon-filter"></i>)</small></p>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h3 class="panel-title">Historia Cl&iacute;nica</h3>
+									<div class="pull-right">
+										<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+											<i class="glyphicon glyphicon-filter"></i>
+										</span>
+									</div>
+								</div>
+								
+								<!--<form role="form" th:action="@{/diagnosticopac}" method="post"> -->
+								<div class="panel-body">
+									<input type="text" class="form-control" id="dev-table-filter" data-action="filter"
+									 data-filters="#dev-table" placeholder="Filtrar Pacientes" />
+								</div>
+								<table class="table table-hover" id="dev-table">
+									<thead>
+										<tr>
+										<th>C&oacute;digo</th>
+										<th>Fecha hecha</th>
+										<th> Nombre paciente</th>
+										<th>Apellido Paterno</th>
+										<th>Apellido Materno</th>
+										<th>DNI</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="a : ${historiaclinicas}">
+											<td th:text="${a.idHistoriaClinica}"></td>
+											<td th:text="${a.fecha}"></td>
+												<td th:text="${a.Paciente.nombre}"></td>
+											<td th:text="${a.Paciente.apellidoPat}"></td>
+											<td th:text="${a.Paciente.apellidoMat}"></td>
+											<td th:text="${a.Paciente.dni}"></td>									</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!-- parte final lista filtro HistoriaClinica -->
+		</section>
+	</div>
+</body>
+</html>

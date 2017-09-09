@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="es">
+  <title>Historia Cl&iacute;nica</title>
+  <!--/*/ <th:block th:include="fragments/headlinks :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="fragments/header :: navbar"></th:block> /*/-->
+	</div>
+	<div class="row">
+		<div class="col-xs-6">
+			<a href="#" th:href="@{/paciente/new}"><img class="img-circle img-responsive img-center" width="350"
+				src="../../static/images/pacienteNuevo1.png" th:src="@{/images/pacienteNuevo1.png}" alt=""/></a>
+			<h2 align="center">Paciente nuevo</h2>
+		</div>
+		<div class="col-xs-6">
+			<a href="#" th:href="@{/diagnostico/new}"><img class="img-circle img-responsive img-center" width="350"
+				src="../../static/images/pacienteExistente1.jpg" th:src="@{/images/pacienteExistente1.jpg}" alt=""/></a>
+			<h2 align="center">Paciente existente</h2>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="es">
+<!--/*/ <th:block th:include="fragments/headlinks :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="fragments/header :: navbar"></th:block> /*/-->
+	</div>
+	
+	<div class="container-fluid">
+		<div class="col-lg-12">
+			<h1 class="page-header">Registrar M&eacute;dico</h1>
+		</div>
+		
+		<div class="col-sm-25">
+			<form class="form-horizontal" th:object="${medico}" th:action="@{/medico}" method="post">	
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Nombre</label>
+					<div class="col-sm-4">
+						<input id="nombre" name ="nombre" class="form-control" placeholder="Nombre" type="text" th:field="*{nombre}" required="required"/>
+						<span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">nombre Error</span>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Apellido Paterno</label>
+					<div class="col-sm-4">
+						<input id="apellidoPat" name ="apellidoPat" class="form-control" placeholder="Apellido Paterno" type="text" th:field="*{apellidoPat}" required="required"/>
+						<span th:if="${#fields.hasErrors('apellidoPat')}" th:errors="*{apellidoPat}">apellidoPat Error</span>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Apellido Materno</label>
+					<div class="col-sm-4">
+						<input id="apellidoMat" name ="apellidoMat" class="form-control" placeholder="Apellido Materno" type="text" th:field="*{apellidoMat}" required="required"/>
+						<span th:if="${#fields.hasErrors('apellidoMat')}" th:errors="*{apellidoMat}">apellidoMat Error</span>
+					</div>
+				</div>	
+				
+	          	<div class="form-group">
+					<label class="col-sm-2 control-label">DNI</label>
+					<div class="col-sm-4">
+						<input id="dni" name ="dni" class="form-control" placeholder="Documento de Identidad" type="text" th:field="*{dni}" required="required"/>
+						<span th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}">dni Error</span>
+					</div>
+				</div>
+				
+	          	<div class="form-group">
+					<label class="col-sm-2 control-label">Fecha de Nacimiento</label>
+					<div class="col-sm-4">
+						<input name='birthdate' type='date' class="form-control" placeholder="yyyy-mm-dd" th:field="*{fechaNac}" required="required"/>
+						<span th:if="${#fields.hasErrors('fechaNac')}" th:errors="*{fechaNac}">fechaNac Error</span>
+					</div>
+				</div>
+				
+				<div class="form-group">
+	            	<label class="col-sm-2 control-label">Sexo</label>
+	            	<div class="col-sm-1">
+						<select class="form-control"  th:field="*{sexo}" required="required" >
+							<option value=" " ></option>
+							<option value="M">M</option>
+							<option value="F">F</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Celular</label>
+					<div class="col-sm-4">
+						<input id="celular" name ="celular" class="form-control" placeholder="Celular" type="text" th:field="*{celular}"/>
+						<span th:if="${#fields.hasErrors('celular')}" th:errors="*{celular}">celular Error</span>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Telefono</label>
+					<div class="col-sm-4">
+						<input id="telefono" name ="telefono" class="form-control" placeholder="Telefono" type="text" th:field="*{telefono}" required="required"/>
+						<span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">telefono Error</span>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Direccion</label>
+					<div class="col-sm-4">
+						<input id="direccion" name ="direccion" class="form-control" placeholder="Direccion" type="text" th:field="*{direccion}" required="required"/>
+						<span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">direccion Error</span>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Rol</label>
+					<div class="col-sm-2">
+						<select class="form-control"  th:field="*{rol}" required="required" >
+							<option value=" " ></option>
+							<option value="1">Administrativo</option>
+							<option value="2">Empleado</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Registrar</button>
+						<input type="button" class="btn btn-default" onclick="location.href='/medicos'" value="Cancel" />
+					</div>
+				</div>
+			</form>
+			<p th:text="${message}">1</p>
+		</div>
+	</div>
+	<!-- /.container-fluid -->
+</body>
+</html>

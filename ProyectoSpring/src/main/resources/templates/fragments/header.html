@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="es">
+<meta charset="ISO-8859-1"/>
+</head>
+<body>
+<div class="navbar-wrapper" th:fragment="navbar">
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">CRUD</a>		
+	  	</div>
+	    
+	    <ul class="nav navbar-nav">
+      	  <li><a href="#" th:href="@{/client/new}">New Client</a></li>
+      	  <li><a href="#" th:href="@{/clients}">List Client</a></li>
+        </ul>
+	     
+		<ul class="nav navbar-nav navbar-right">
+	      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span></a></li>
+	    </ul>
+	  
+	  </div>
+	</nav>
+</div>
+</body>
+</html>

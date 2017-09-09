@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="es">
+  <!--/*/ <th:block th:include="fragments/headlinks :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="col-lg-12">
+			<h1 class="page-header">Register a New Client</h1>
+		</div>
+		
+		<div class="col-sm-25">
+			<form class="form-horizontal" th:object="${client}" th:action="@{/client}" method="post">	
+			
+				<div class="form-group">
+				<label class="col-sm-2 control-label">Name</label>
+					<div class="col-sm-4">
+						<input id="firstname" name ="firstname" class="form-control" placeholder="First Name" type="text" th:field="*{firstname}" required="required"/>
+						<span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">This field is required.</span>
+					</div>
+				</div>
+				
+				<div class="form-group">
+				<label class="col-sm-2 control-label">Father's Last Name</label>
+					<div class="col-sm-4">
+						<input id="flastname" name ="flastname" class="form-control" placeholder="Father's Last Name" type="text" th:field="*{flastname}" required="required"/>
+						<span th:if="${#fields.hasErrors('flastname')}" th:errors="*{flastname}">This field is required.</span>
+					</div>
+				</div>
+				
+				<div class="form-group">
+				<label class="col-sm-2 control-label">Mother's Last Name</label>
+					<div class="col-sm-4">
+						<input id="mlastname" name ="mlastname" class="form-control" placeholder="Mother's Last Name" type="text" th:field="*{mlastname}"/>
+						<span th:if="${#fields.hasErrors('mlastname')}" th:errors="*{mlastname}">This field is required.</span>
+					</div>
+				</div>	
+				
+				
+				<div class="form-group">
+	            	<label class="col-sm-2 control-label">Gender</label>
+	            	<div class="col-sm-1">
+						<select class="form-control"  th:field="*{gender}" required="required" >
+							<option value=" " ></option>
+							<option value="M">M</option>
+							<option value="F">F</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+				<label class="col-sm-2 control-label">Address</label>
+					<div class="col-sm-4">
+						<input id="address" name ="address" class="form-control" placeholder="Address" type="text" th:field="*{address}"/>
+						<span th:if="${#fields.hasErrors('address')}" th:errors="*{address}">This field is required.</span>
+					</div>
+				</div>
+				
+				<div class="form-group">
+				<label class="col-sm-2 control-label">City</label>
+					<div class="col-sm-4">
+						<input id="city" name ="city" class="form-control" placeholder="City" type="text" th:field="*{city}" required="required"/>
+						<span th:if="${#fields.hasErrors('city')}" th:errors="*{city}">This field is required.</span>
+					</div>
+				</div>
+				
+				<div class="form-group">
+				<label class="col-sm-2 control-label">Region</label>
+					<div class="col-sm-4">
+						<input id="region" name ="region" class="form-control" placeholder="Region" type="text" th:field="*{region}" required="required"/>
+						<span th:if="${#fields.hasErrors('region')}" th:errors="*{region}">This field is required</span>
+					</div>
+				</div>
+				
+				<div class="form-group">
+				<label class="col-sm-2 control-label">Phone Number</label>
+					<div class="col-sm-4">
+						<input id="phonenumber" name ="phonenumber" class="form-control" placeholder="Phone Number" type="number" min="6" th:field="*{phonenumber}" required="required"/>
+						<span th:if="${#fields.hasErrors('phonenumber')}" th:errors="*{phonenumber}">This field is required</span>
+					</div>
+				</div>
+				
+				<div class="form-group">
+				<label class="col-sm-2 control-label">DNI</label>
+					<div class="col-sm-4">
+						<input id="dni" name ="dni" class="form-control" placeholder="ID Document" type="number" min="8" th:field="*{dni}" required="required"/>
+						<span th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}">This field is required</span>
+					</div>
+				</div>
+				
+				<div class="form-group">
+				<label class="col-sm-2 control-label">Email</label>
+					<div class="col-sm-4">
+						<input id="email" name ="email" class="form-control" placeholder="Email" type="text" th:field="*{email}" required="required"/>
+						<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">This field is required</span>
+					</div>
+				</div>
+				
+				<div class="form-group">
+				<label class="col-sm-2 control-label">Password</label>
+					<div class="col-sm-4">
+						<input id="password" name ="password" class="form-control" placeholder="Password" type="text" th:field="*{password}" required="required"/>
+						<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">This field is required</span>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Authorization</label>
+					<div class="col-sm-2">
+						<select class="form-control"  th:field="*{authorization}" required="required" >
+							<option value=" " ></option>
+							<option value="Admin">Administrator</option>
+							<option value="Employee">Employee</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Register</button>
+						<input type="button" class="btn btn-default" onclick="location.href='/clients'" value="Cancel" />
+					</div>
+				</div>
+			</form>
+			<p th:text="${message}">1</p>
+		</div>
+	</div>
+	<!-- /.container-fluid -->
+</body>
+</html>

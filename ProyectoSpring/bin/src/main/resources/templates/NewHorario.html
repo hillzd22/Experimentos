@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="es">
+<meta charset="ISO-8859-1" />
+<title>Horario</title>
+<!--/*/ <th:block th:include="fragments/headlinks :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="fragments/header :: navbar"></th:block> /*/-->
+
+		<form th:object="${horario}" th:action="@{/horario}" method="post">
+
+
+			<!--Horario-->
+
+			<div class="panel panel-default" id="panelhorario">
+				<div class="panel-body">Horario</div>
+
+				<div class="form-group">
+					<label for="usr">Consultorio:</label> <select class="form-control"
+						th:field="*{consultorio.idConsultorio}">
+
+						<option th:each="con:${consultorios}"
+							th:value="${con.idConsultorio}" th:text="${con.nombre}"></option>
+					</select>
+				</div>
+
+
+
+				<div class="row">
+					<div class="form-group">
+						<label for="usr">Dias:</label>
+						<p></p>
+						<div class="items-collection">
+							<div class="info-block block-info clearfix">
+								<div data-toggle="buttons" class="btn-group bizmoduleselect">
+									<label class="btn btn-warning btn-outline custom">
+										<div class="itemcontent">
+											<input type="checkbox" name="var_id[]" autocomplete="off"
+												value="" /> Lunes
+										</div>
+									</label>
+								</div>
+
+								<div data-toggle="buttons" class="btn-group bizmoduleselect">
+									<label class="btn btn-warning btn-outline custom">
+										<div class="itemcontent">
+											<input type="checkbox" name="var_id[]" autocomplete="off"
+												value="" /> Martes
+										</div>
+									</label>
+								</div>
+
+								<div data-toggle="buttons" class="btn-group bizmoduleselect">
+									<label class="btn btn-warning btn-outline custom">
+										<div class="itemcontent">
+											<input type="checkbox" name="var_id[]" autocomplete="off"
+												value="" /> Miercoles
+										</div>
+									</label>
+								</div>
+
+								<div data-toggle="buttons" class="btn-group bizmoduleselect">
+									<label class="btn btn-warning btn-outline custom">
+										<div class="itemcontent">
+											<input type="checkbox" name="var_id[]" autocomplete="off"
+												value="" /> Jueves
+										</div>
+									</label>
+								</div>
+
+								<div data-toggle="buttons" class="btn-group bizmoduleselect">
+									<label class="btn btn-warning btn-outline custom">
+										<div class="itemcontent">
+											<input type="checkbox" name="var_id[]" autocomplete="off"
+												value="" /> Viernes
+										</div>
+									</label>
+								</div>
+								<div data-toggle="buttons" class="btn-group bizmoduleselect">
+									<label class="btn btn-warning btn-outline custom">
+										<div class="itemcontent">
+											<input type="checkbox" name="var_id[]" autocomplete="off"
+												value="" /> Sabado
+										</div>
+									</label>
+								</div>
+								<div data-toggle="buttons" class="btn-group bizmoduleselect">
+									<label class="btn btn-warning btn-outline custom">
+										<div class="itemcontent">
+											<input type="checkbox" name="var_id[]" autocomplete="off"
+												value="" /> Domingo
+										</div>
+									</label>
+								</div>
+
+							</div>
+
+
+
+						</div>
+
+					</div>
+				</div>
+
+
+
+
+				<div class="form-group">
+					<label for="usr">Hora Inicio:</label>
+					<div class="input-group clockpicker">
+						<input type="text" class="form-control" value="00:00"
+							th:field="*{horaInicio}" required="required" /> <span
+							class="input-group-addon"> <span
+							class="glyphicon glyphicon-time"></span>
+						</span>
+					</div>
+				</div>
+
+
+
+				<div class="form-group">
+					<label for="usr">Hora Final:</label>
+					<div class="input-group clockpicker">
+						<input type="text" class="form-control" value="00:00"
+							th:field="*{horaFin}" required="required" /> <span
+							class="input-group-addon"> <span
+							class="glyphicon glyphicon-time"></span>
+
+
+						</span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="usr">Codigo de Medico:</label> <input type="text"
+						class="form-control" id="usr" placeholder="Codigo Identificador"
+						th:field="*{medico.idMedico}" required="required" /> <span
+						th:if="${#fields.hasErrors('medico.idMedico')}"
+						th:errors="*{medico.idMedico}">medico.idMedico Error </span>
+				</div>
+
+				<div class="form-group">
+					<label for="usr">Especialidad:</label> <select class="form-control"
+						th:field="*{especialidad.idEspecialidad}">
+
+						<option th:each="esp:${especialidades}"
+							th:value="${esp.idEspecialidad}" th:text="${esp.nombre}"></option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="usr">Dividir Entre:</label> <select
+						class="form-control">
+						<option value=" "></option>
+						<option value="one">30 minutos</option>
+						<option value="two">45 minutos</option>
+						<option value="three">1 hora</option>
+					</select>
+				</div>
+
+				<button type="button" class="btn btn-default custom pull-right">Cancelar</button>
+				<button type="button"
+					class="btn btn-primary custom pull-right btn-space">Crear</button>
+
+			</div>
+
+
+		</form>
+
+	</div>
+</body>
+</html>

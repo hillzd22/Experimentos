@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head lang="es">
+  <title>Historia Cl&iacute;nica</title>
+  <!--/*/ <th:block th:include="fragments/headlinks :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="fragments/header :: navbar"></th:block> /*/-->
+	</div>
+	
+	<div class="container-fluid">
+		<section id="contain1" class="container">
+			<div class="container-page">
+				<legend><img id="hcicon" src="../../static/images/imageIcon6.png" th:src="@{/images/imageIcon6.png}"/>HISTORIA CLINICA</legend>
+			</div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Diagnostico Id</th>
+						<th>Historia Cl&iacute;nica Id</th>
+						<th>Medico Id</th>
+						<th>Tipo</th>
+						<th>Descripci&oacute;n</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="d : ${diagnosticos}">
+						<th th:text="${d.idDiagnostico}" scope="row">Diagnostico Id</th>
+						<td th:text="${d.historiaclinica.idHistoriaClinica}">Historia Cl&iacute;nica Id</td>
+						<td th:text="${d.Medico.idMedico}">Medico Id</td>
+						<td th:text="${d.tipo}">Tipo</td>
+						<td th:text="${d.descripcion}">descripcion</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" onclick="location.href='/'">Salir</button>
+			</div>
+		</section>
+	</div>
+</body>
+</html>

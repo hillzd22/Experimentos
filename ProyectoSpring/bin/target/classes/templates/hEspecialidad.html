@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="es">
+<title>Histor&iacute;a Cl&iacute;nica</title>
+<!--/*/ <th:block th:include="fragments/headlinks :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="fragments/header :: navbar"></th:block> /*/-->
+	</div>
+	
+	<div class="container-fluid">
+		<section id="contain1" class="container">
+			<div class="container-page">
+				<legend><img id="hcicon" src="../../static/images/imageIcon6.png" th:src="@{/images/imageIcon6.png}"/>ESPECIALIDADES</legend>
+				<a href="#" th:href="@{/especialidad/new}">Registrar Nuevo Especialidad</a>
+				<table class="table table-striped">
+					<tr>
+						<th>Especialidad Id</th>
+						<th>Nombre</th>
+						<th>Ver</th>
+						<th>Editar</th>
+						<th>Eliminar</th>
+					</tr>
+					<tr th:each="e : ${especialidades}">
+						<td th:text="${e.idEspecialidad}">Especialidad Id</td>
+						<td th:text="${e.nombre}">Nombre</td>
+						<td><a th:href="${'/especialidad/' + e.idEspecialidad}">Ver</a></td>
+						<td><a th:href="${'/especialidad/edit/'+ e.idEspecialidad}">Editar</a></td>
+						<td><a href="#" class="linkDelete" th:id="${e.idEspecialidad}">Eliminar</a></td>
+					</tr>
+				</table>
+			</div>
+			
+			<div id="modalDelete" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title">Eliminar Especialidad</h4>
+						</div>
+						<div class="modal-body">
+							<p>Está seguro que desea eliminar esta especialidad?</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+							<button id="btnDelete" class="btn btn-danger">
+								<i class="glyphicon glyphicon-remove-sign"></i> Delete
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<script type="text/javascript">
+				$(function() {
+		
+					var idEspecialidad = null;
+		
+					$('.linkDelete').on('click', function(e) {
+						e.preventDefault();
+						$('#modalDelete').modal();
+						idEspecialidad = $(this).attr('id');
+					});
+		
+					$('#btnDelete').on('click', function() {
+						location.href = "/especialidad/delete/" + idEspecialidad;
+					});
+		
+				});
+			</script>
+		</section>
+	</div>
+</body>
+</html>

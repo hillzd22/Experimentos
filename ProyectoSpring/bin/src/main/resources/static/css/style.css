@@ -1,0 +1,484 @@
+body {
+	font-family: 'Raleway', sans-serif;
+}
+
+#brand-pic {
+    width: 24px !important;
+    height: 24px !important;
+ margin-top: 12px;
+  margin-left: -15px;
+}
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.process-step .btn:focus {
+	outline: none
+}
+
+.process {
+	display: table;
+	width: 100%;
+	position: relative
+}
+
+.process-row {
+	display: table-row
+}
+
+.process-step button[disabled] {
+	opacity: 1 !important;
+	filter: alpha(opacity = 100) !important
+}
+
+.process-row:before {
+	top: 40px;
+	bottom: 0;
+	position: absolute;
+	content: " ";
+	width: 100%;
+	height: 1px;
+	background-color: #ccc;
+	z-order: 0
+}
+
+.process-step {
+	display: table-cell;
+	text-align: center;
+	position: relative
+}
+
+.process-step p {
+	margin-top: 4px
+}
+
+.btn-circle {
+	width: 80px;
+	height: 80px;
+	text-align: center;
+	font-size: 12px;
+	border-radius: 50%
+}
+
+#hcicon {
+	margin .top: 100px;
+	height: 40px;
+}
+
+#upcicon {
+	margin .top: 100px;
+	height: 40px;
+}
+
+#maxcaracteres {
+	margin-left: 260px;
+}
+
+#contain1 {
+	margin: 20px auto 0;
+}
+
+#botoncrear {
+	margin-left: 340px;
+}
+
+.row {
+	margin-top: 40px;
+	padding: 0 10px;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.panel-heading div {
+	margin-top: -18px;
+	font-size: 15px;
+}
+
+.panel-heading div span {
+	margin-left: 5px;
+}
+
+.panel-body {
+	display: none;
+}
+
+.title-wrapper {
+	position: absolute;
+	left: 50px !important;
+}
+
+.blue-square {
+	background: #006be5;
+	color: #fff;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 50px;
+}
+
+.toolbar-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 50px;
+	z-index: 30;
+	border-bottom: 1px solid #d1d1d1;
+	box-sizing: border-box;
+}
+
+.toolbar {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	z-index: 1;
+	background-color: #f5f5f5;
+}
+
+.toolbar-left {
+	left: 0;
+	width: 18em;
+	z-index: 2;
+}
+
+.toolbar-center {
+	left: 18em;
+	right: 8em;
+	z-index: 2;
+}
+
+.toolbar-right {
+	right: 0;
+	width: 8em;
+	z-index: 2;
+}
+
+.list-group-horizontal .list-group-item {
+	display: inline-block;
+}
+
+.list-group-horizontal .list-group-item {
+	margin-bottom: 0;
+	margin-left: -4px;
+	margin-right: 0;
+}
+
+.list-group-horizontal .list-group-item:first-child {
+	border-top-right-radius: 0;
+	border-bottom-left-radius: 4px;
+}
+
+.list-group-horizontal .list-group-item:last-child {
+	border-top-right-radius: 4px;
+	border-bottom-left-radius: 0;
+}
+
+.custab {
+	border: 1px solid #ccc;
+	padding: 5px;
+	margin: 5% 0;
+	box-shadow: 3px 3px 2px #ccc;
+	transition: 0.5s;
+}
+
+.custab:hover {
+	box-shadow: 3px 3px 0px transparent;
+	transition: 0.5s;
+}
+
+#container1 {
+	margin-top: -50px;
+}
+
+#toolbar1 {
+	margin-left: -320px;
+}
+
+#container2 {
+	margin-top: -40px;
+}
+
+#container4 {
+	margin-top: -50px;
+}
+
+#botonac {
+	margin-left: 913px;
+}
+
+#boton1 {
+	margin-left: 215px;
+}
+
+#container5 {
+	margin-left: -330px;
+	width: 900px;
+	margin-top: 0px;
+}
+
+#container6 {
+	margin-left: 0px;
+	width: 300px;
+	margin-top: -35px;
+}
+
+/***
+Bootstrap Line Tabs by @keenthemes
+A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
+Licensed under MIT
+***/
+
+/* Tabs panel */
+.tabbable-panel {
+	border: 1px solid #eee;
+	padding: 10px;
+}
+
+/* Default mode */
+.tabbable-line>.nav-tabs {
+	border: none;
+	margin: 0px;
+}
+
+.tabbable-line>.nav-tabs>li {
+	margin-right: 2px;
+}
+
+.tabbable-line>.nav-tabs>li>a {
+	border: 0;
+	margin-right: 0;
+	color: #737373;
+}
+
+.tabbable-line>.nav-tabs>li>a>i {
+	color: #a6a6a6;
+}
+
+.tabbable-line>.nav-tabs>li.open, .tabbable-line>.nav-tabs>li:hover {
+	border-bottom: 4px solid #fbcdcf;
+}
+
+.tabbable-line>.nav-tabs>li.open>a, .tabbable-line>.nav-tabs>li:hover>a
+	{
+	border: 0;
+	background: none !important;
+	color: #333333;
+}
+
+.tabbable-line>.nav-tabs>li.open>a>i, .tabbable-line>.nav-tabs>li:hover>a>i
+	{
+	color: #a6a6a6;
+}
+
+.tabbable-line>.nav-tabs>li.open .dropdown-menu, .tabbable-line>.nav-tabs>li:hover .dropdown-menu
+	{
+	margin-top: 0px;
+}
+
+.tabbable-line>.nav-tabs>li.active {
+	border-bottom: 4px solid #339cb7;
+	position: relative;
+}
+
+.tabbable-line>.nav-tabs>li.active>a {
+	border: 0;
+	color: #333333;
+}
+
+.tabbable-line>.nav-tabs>li.active>a>i {
+	color: #404040;
+}
+
+.tabbable-line>.tab-content {
+	margin-top: -3px;
+	background-color: #fff;
+	border: 0;
+	border-top: 1px solid #eee;
+	padding: 15px 0;
+}
+
+.portlet .tabbable-line>.tab-content {
+	padding-bottom: 0;
+}
+
+/* Below tabs mode */
+.tabbable-line.tabs-below>.nav-tabs>li {
+	border-top: 4px solid transparent;
+}
+
+.tabbable-line.tabs-below>.nav-tabs>li>a {
+	margin-top: 0;
+}
+
+.tabbable-line.tabs-below>.nav-tabs>li:hover {
+	border-bottom: 0;
+	border-top: 4px solid #fbcdcf;
+}
+
+.tabbable-line.tabs-below>.nav-tabs>li.active {
+	margin-bottom: -2px;
+	border-bottom: 0;
+	border-top: 4px solid #339cb7;
+}
+
+.tabbable-line.tabs-below>.tab-content {
+	margin-top: -10px;
+	border-top: 0;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 15px;
+}
+
+.container {
+	width: 100%;
+}
+
+.widthContraint {
+	margin: 0 auto;
+	width: 600px;
+}
+
+.inputContainer {
+	width: 100%;
+	border-bottom: 2px solid #428bca;
+	padding-bottom: 8px;
+	padding-top: 8px;
+}
+
+.progressContainer {
+	width: 100%;
+}
+
+.resultsContainer {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	width: 100%;
+	margin-top: 8px;
+}
+
+#searchPanel {
+	font-size: 12px;
+	border-radius: 3px;
+}
+
+#addressTable {
+	margin: 0;
+}
+
+#addressTable td {
+	border: 0;
+	padding: 4px;
+}
+
+#addressTable td:nth-child(1) {
+	font-weight: bold;
+}
+
+#addressTable td:nth-child(3) {
+	font-weight: bold;
+}
+
+#addressTable td:nth-child(5) {
+	font-weight: bold;
+}
+
+.table td {
+	white-space: nowrap;
+}
+
+#searchPanelHeading {
+	height: 30px;
+	padding: 5px 10px;
+	line-height: 1.5;
+	color: #9e9e9e;
+}
+
+#logoModifier {
+	border: 0;
+	background-color: #fff;
+	font-weight: bold;
+	font-size: 10pt;
+	min-width: 200px;
+}
+
+#searchField {
+	border-radius: 3px;
+}
+
+.row {
+	margin-top: 40px;
+	padding: 0 10px;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.panel-heading span {
+	margin-top: -20px;
+	font-size: 15px;
+}
+
+#myInput {
+	background-image: url('/css/searchicon.png');
+	/* Add a search icon to input */
+	background-position: 10px 12px; /* Position the search icon */
+	background-repeat: no-repeat; /* Do not repeat the icon image */
+	width: 100%; /* Full-width */
+	/* Increase font-size */
+	padding: 12px 20px 12px 40px; /* Add some padding */
+	border: 1px solid #ddd; /* Add a grey border */
+	margin-bottom: 12px; /* Add some space below the input */
+}
+
+#myTable {
+	border-collapse: collapse; /* Collapse borders */
+	width: 100%; /* Full-width */
+	border: 1px solid #ddd; /* Add a grey border */
+	/* Increase font-size */
+}
+
+#myTable th, #myTable td {
+	text-align: left; /* Left-align text */
+	padding: 12px; /* Add padding */
+}
+
+#myTable tr {
+	/* Add a bottom border to all table rows */
+	border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+	/* Add a grey background color to the table header and on hover */
+	background-color: #f1f1f1;
+}
+
+.btn-outline {
+	color: #555b58;
+	background-image: none;
+	background-color: transparent;
+	border-color: #ccc;
+}
+
+#brand-pic {
+	width: 24px !important;
+	height: 24px !important;
+	margin-top: 12px;
+	margin-left: -15px;
+}
+
+#panelhorario {
+	width: 900px;
+	height: 1000px;
+	margin: 0 auto;
+	padding: 30px;
+}
+
+.custom {
+	width: 85px !important;
+}
+
+.btn-space {
+	margin-right: 10px;
+}

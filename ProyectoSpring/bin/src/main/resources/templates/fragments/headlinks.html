@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="es" th:fragment="head">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<meta name="description" content="Historial Clinico UPC"/>
+	<meta name="author" content="UPC"/>
+	<link href="../../css/bootstrap.css" th:href="@{/css/bootstrap.css}" rel="stylesheet" media="screen"/>
+	<link href="../../css/style.css" th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all"/>
+	
+	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+	
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css"/>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'/>
+	<link href="http://fonts.googleapis.com/css?family=Advent%20Pro" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css"/>
+	
+	<link href="../../css/clockpicker.css" th:href="@{/css/clockpicker.css}" rel="stylesheet" media="screen"/>
+	<link href="../../css/bootstrap-clockpicker.css" th:href="@{/css/bootstrap-clockpicker.css}" rel="stylesheet" media="screen"/>
+	<link href="../../css/bootstrap-clockpicker.min.css" th:href="@{/css/bootstrap-clockpicker.min.css}" rel="stylesheet" media="screen"/>
+		
+	<title>Historia Cl&iacute;nica</title>
+	
+	<!-- Scripts -->
+	<script src="http://bootsnipp.com/dist/scripts.min.js"></script>
+	<script src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="../../js/bootstrap.js" th:src="@{/js/bootstrap.js}"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+	
+	<script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script src="http://momentjs.com/downloads/moment-with-locales.js"></script>
+	<script src="http://momentjs.com/downloads/moment-timezone-with-data.js"></script>
+	
+	<script src="../../js/bootstrap.js" th:src="@{/js/bootstrap.js}"></script>
+	<script src="../../js/bootstrap-clockpicker.js" th:src="@{/js/bootstrap-clockpicker.js}"></script>
+	<script src="../../js/clockpicker.js" th:src="@{/js/clockpicker.js}"></script>
+	
+	<script>
+		(function(){
+			'use strict';
+		  var $ = jQuery;
+		  $.fn.extend({
+		    filterTable: function(){
+		      return this.each(function(){
+		        $(this).on('keyup', function(e){
+		          $('.filterTable_no_results').remove();
+		          var $this = $(this), 
+		                        search = $this.val().toLowerCase(), 
+		                        target = $this.attr('data-filters'), 
+		                        $target = $(target), 
+		                        $rows = $target.find('tbody tr');
+		                        
+		          if(search == '') {
+		            $rows.show(); 
+		          } else {
+		            $rows.each(function(){
+		              var $this = $(this);
+		              $this.text().toLowerCase().indexOf(search) === -1 ? $this.hide() : $this.show();
+		            })
+		            if($target.find('tbody tr:visible').size() === 0) {
+		              var col_count = $target.find('tr').first().find('td').size();
+		              var no_results = $('<tr class="filterTable_no_results"><td colspan="'+col_count+'">No results found</td></tr>')
+		              $target.find('tbody').append(no_results);
+		            }
+		          }
+		        });
+		      });
+		    }
+		  });
+		  $('[data-action="filter"]').filterTable();
+		})(jQuery);
+		
+		$(function(){
+		    // attach table filter plugin to inputs
+		  $('[data-action="filter"]').filterTable();
+		  
+		  $('.container').on('click', '.panel-heading span.filter', function(e){
+		    var $this = $(this), 
+		      $panel = $this.parents('.panel');
+		    
+		    $panel.find('.panel-body').slideDown("slow");
+		    if($this.css('display') != 'none') {
+		      $panel.find('.panel-body input').focus();
+		    }
+		  });
+		  $('[data-toggle="tooltip"]').tooltip();
+		})
+	</script>
+	
+	<script type="text/javascript">
+	$(document).ready(function(){
+		var navItems = $('.admin-menu li > a');
+		var navListItems = $('.admin-menu li');
+		var allWells = $('.admin-content');
+		var allWellsExceptFirst = $('.admin-content:not(:first)');
+		
+		allWellsExceptFirst.hide();
+		navItems.click(function(e)
+		{
+			e.preventDefault();
+			navListItems.removeClass('active');
+			$(this).closest('li').addClass('active');
+			
+			allWells.hide();
+			var target = $(this).attr('data-target-id');
+			$('#' + target).show();
+		});
+	});
+	</script>
+	
+	<script>
+	$('input[name="daterange"]').daterangepicker({
+		locale: {
+			format: 'YYYY-MM-DD'
+		},
+		startDate: '2016-01-01',
+		endDate: '2016-12-31'
+	},
+	function(start, end, label) {
+		alert('A new date range was chosen: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+	});
+	</script>
+
+	<script>
+	$(function(){
+		$('.btn-circle').on('click',function(){
+			$('.btn-circle.btn-info').removeClass('btn-info').addClass('btn-default');
+			$(this).addClass('btn-info').removeClass('btn-default').blur();
+		});
+		
+		$('.next-step, .prev-step').on('click', function (e){
+			var $activeTab = $('.tab-pane.active');
+			
+			$('.btn-circle.btn-info').removeClass('btn-info').addClass('btn-default');
+			
+			if ( $(e.target).hasClass('next-step') )
+			{
+				var nextTab = $activeTab.next('.tab-pane').attr('id');
+				$('[href="#'+ nextTab +'"]').addClass('btn-info').removeClass('btn-default');
+				$('[href="#'+ nextTab +'"]').tab('show');
+			}
+			else
+			{
+				var prevTab = $activeTab.prev('.tab-pane').attr('id');
+				$('[href="#'+ prevTab +'"]').addClass('btn-info').removeClass('btn-default');
+				$('[href="#'+ prevTab +'"]').tab('show');
+			}
+		});
+	});
+	</script>
+
+	<script>
+	$(document).on('click', '.panel-heading span.clickable', function(e){
+		var $this = $(this);
+		if(!$this.hasClass('panel-collapsed')) {
+			$this.parents('.panel').find('.panel-body').slideUp();
+			$this.addClass('panel-collapsed');
+			$this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+		} else {
+			$this.parents('.panel').find('.panel-body').slideDown();
+			$this.removeClass('panel-collapsed');
+			$this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+		}
+	})
+	</script>
+
+	<!--hora -->
+	<script>
+	function addNow() {
+		nowDate = moment().tz("Europe/London").format('YYYY-MM-DD');
+		nowTime = moment().tz("Europe/London").format('HH:mm:ss');
+		document.getElementById('registration-date').value = nowDate;
+		document.getElementById('registration-time').value = nowTime;
+		set = setTimeout(function () { addNow(); }, 1000);
+	}
+	</script>
+	
+	<script>
+		function stopNow() {
+			clearTimeout(set);
+		}
+	</script>
+	
+	<!--Busqueda por fecha -->
+	<script type="text/javascript">
+	$(function() {
+		$('input[name="birthdate"]').daterangepicker({
+			singleDatePicker: true,
+			showDropdowns: true
+		}, 
+		function(start, end, label) {
+			var years = moment().diff(start, 'years');
+			alert("You are " + years + " years old.");
+		});
+	});
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="es">
+  <!--/*/ <th:block th:include="fragments/headlinks :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="fragments/header :: navbar"></th:block> /*/-->
+	</div>
+	
+	<div class="container-fluid">
+		<section id="contain1" class="container">
+			<div class="container-page">
+				<legend><img id="hcicon" src="../../static/images/imageIcon6.png" th:src="@{/images/imageIcon6.png}"/>HISTORIA CL&Iacute;NICA</legend>
+				<a href="#" th:href="@{/historiaclinica/new}">Registrar Nueva historia cl&iacute;nica</a>
+				<table class="table table-striped">
+					<tr>
+						<th>Historia Cl&iacute;nica Id</th>
+						<th>Fecha hecha</th>
+						<th>Nombre Paciente</th>
+						<th>Apellido Paterno</th>
+						<th>Apellido Materno</th>
+						<th>Ver</th>
+						<th>Editar</th>
+						<th>Eliminar</th>
+					</tr>
+					<tr th:each="hc : ${historiaclinicas}">
+						<td th:text="${hc.idHistoriaClinica}">Historia Cl&iacute;nica Id</td>
+						<td th:text="${hc.fecha}">Fecha hecha</td>
+						<td th:text="${hc.Paciente.nombre}">Nombre Paciente</td>
+						<td th:text="${hc.Paciente.apellidoPat}">Apellido Paterno</td>
+						<td th:text="${hc.Paciente.apellidoMat}">Apellido Materno</td>
+						<td><a th:href="${'diagnostico/' + hc.idHistoriaClinica}">Seleccionar</a></td>
+						<td><a th:href="${'/diagnostico/edit/'+ hc.idHistoriaClinica}">Editar</a></td>
+						<td><a href="#" class="linkDelete" th:id="${hc.idHistoriaClinica}">Eliminar</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div id="modalDelete" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title">Eliminar historia cl&iacute;nica</h4>
+						</div>
+						<div class="modal-body">
+							<p>Está seguro que desea eliminar este m&eacute;dico?</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+							<button id="btnDelete" class="btn btn-danger">
+								<i class="glyphicon glyphicon-remove-sign"></i> Delete
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<script type="text/javascript">
+				$(function() {
+		
+					var idHC = null;
+		
+					$('.linkDelete').on('click', function(e) {
+						e.preventDefault();
+						$('#modalDelete').modal();
+						idHC = $(this).attr('id');
+					});
+		
+					$('#btnDelete').on('click', function() {
+						location.href = "/medico/delete/" + idHC;
+					});
+		
+				});
+			</script>
+		</section>
+	</div>
+</body>
+</html>

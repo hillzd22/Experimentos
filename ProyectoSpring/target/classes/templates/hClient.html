@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="es">
+<!--/*/ <th:block th:include="fragments/headlinks :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="container">
+		<input type="button" class="btn btn-default" onclick="location.href='/'" value="Go back" />
+	</div>
+	
+	<div class="container-fluid">
+		<section id="contain1" class="container">
+			<div class="container-page">
+				<table class="table table-striped">
+					<tr>
+						<th>Client Id</th>
+						<th>First Name</th>
+						<th>Father's Last Name</th>
+						<th>Mother's Last Name</th>
+						<th>Gender</th>
+						<th>Address</th>
+						<th>City</th>
+						<th>Region</th>
+						<th>Phone Number</th>
+						<th>DNI</th>
+						<th>Email</th>
+						<th>Authorization</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+					<tr th:each="c : ${clients}">
+						<td th:text="${c.clientid}">Client Id</td>
+						<td th:text="${c.firstname}">First Name</td>
+						<td th:text="${c.flastname}">Father's Last Name</td>
+						<td th:text="${c.mlastname}">Mother's Last Name</td>
+						<td th:text="${c.gender}">Gender</td>
+						<td th:text="${c.address}">Address</td>
+						<td th:text="${c.city}">City</td>
+						<td th:text="${c.region}">Region</td>
+						<td th:text="${c.phonenumber}">Phone Number</td>
+						<td th:text="${c.dni}">DNI</td>
+						<td th:text="${c.email}">Email</td>
+						<td th:text="${c.authorization}">Authorization</td>
+						
+						<td><a th:href="${'/client/edit/'+ c.clientid}">Edit</a></td>
+						<td><a href="#" class="linkDelete" th:id="${c.clientid}">Delete</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		
+			<!-- Division Modal -->
+			<div id="modalDelete" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title">Delete Client</h4>
+						</div>
+						<div class="modal-body">
+							<p>Are you sure that you want to delete this client?</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+							<button id="btnDelete" class="btn btn-success">
+								<i class="glyphicon glyphicon-remove-sign"></i> Delete
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		
+			
+			<script type="text/javascript">
+				$(function() {
+		
+					var clientid = null;
+		
+					$('.linkDelete').on('click', function(e) {
+						e.preventDefault();
+						$('#modalDelete').modal();
+						clientid = $(this).attr('id');
+					});
+		
+					$('#btnDelete').on('click', function() {
+						location.href = "/client/delete/" + clientid;
+					});
+		
+				});
+			</script>
+		</section>
+	</div>
+</body>
+</html>
